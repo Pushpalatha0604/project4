@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CGPA Calculator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  </style>
+</head>
+<style>
+button{
+    height: 10%;
+}
+
+#cgpa{
+    border: 2px ;
+}
+h2{
+    margin: auto;
+    text-align: center;
+}
+</style>
+<body >
+<div class="col-sm-12" style="background-color:lavenderblush;">   
+<div class="jumbotron text-center" style="margin-bottom:0; background:orange;">
+<h1>CGPA CALCULATOR</h1>
+</div><br><br><br><br>
+    <div id="mydiv" class="container">
+        <div class="row">
+            <label class="col-sm-5 col-form-label"> No of Semesters Completed : </label>
+            <select class="form-control col-sm-7 form-control-md ">
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+            </select><br><br>
+        </div>
+        <div id="div" class="row"></div>
+		<br><br><br><br>
+        <div class="row">
+            <button  col-sm-12" >Calculate CGPA</button></div>
+            <label class="col-sm-5 col-form-label">CGPA : </label>
+            <input id="cgpa" class="form-control col-sm-7 form-control-md " type="text" disabled>
+         </div>
+    </div>
+	<br><br><br>
+	<footer>
+  <div class="col-sm-12" style="background-color:skyblue;">   
+  <h3><p align=right>M.pushpalatha</p>
+  <p align=right>18ITR078</p></h3>
+</footer>
+</body>
+<script>
+    var s = document.querySelector("select");
+    var d = document.querySelector("#div");
+    var b = document.querySelector("button");
+s.addEventListener("change",()=>{
+    var str='';
+    for(var i=1;i<=s.value;i++){
+        str=str+"<label class='col-sm-5 col-form-label'>Semester "+i+" : </label><input type='text' class='gpa form-control col-sm-7 form-control-md' name='gpa"+i+"' required><br><br>";
+    }
+    d.innerHTML=str;
+})
+b.addEventListener("click",()=>{
+    var arr = document.querySelectorAll(".gpa");
+    var sum=0;
+    arr.forEach((a)=>{
+        sum+=parseInt(a.value);
+    })
+    sum=sum/parseInt(s.value);
+    document.querySelector("#cgpa").setAttribute("value",sum);
+})
+
+
+</script>
+
+</html>
